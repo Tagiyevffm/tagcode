@@ -171,9 +171,11 @@ npm run check       # typecheck + tests
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) for the current status, test results and architectural decisions, and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the module map.
 
-## Landing page
+## Live site
 
-A standalone, dependency-free welcome page lives at [landing/index.html](landing/index.html). Open it directly in a browser or serve the folder:
+The landing page is published with GitHub Pages at **https://tagiyevffm.github.io/tagcode/**.
+
+A standalone, dependency-free copy lives at [landing/index.html](landing/index.html). Open it directly in a browser or serve the folder:
 
 ```bash
 npx serve landing

@@ -52,6 +52,7 @@ testing).
 - [x] Expandable tool cards with arguments, duration and diff previews
 - [x] `/` command autocomplete, code-copy buttons and toast feedback
 - [x] Standalone single-file landing/welcome page (`landing/index.html`)
+- [x] GitHub Pages deployment workflow (`.github/workflows/pages.yml`)
 - [x] Model selections persist to global/project config across launches
 - [x] `tgc` opens the desktop app; `tgc tui` keeps the terminal UI
 - [x] `/model` auto-fetches provider models and opens an interactive picker

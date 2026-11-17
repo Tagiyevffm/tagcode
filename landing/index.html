@@ -4,9 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#08090b" />
     <meta
       name="description"
       content="TagCode is an extensible autonomous coding agent with a desktop app, terminal UI, MCP support, Agent Skills and a safety-first permission model."
+    />
+    <link rel="canonical" href="https://tagiyevffm.github.io/tagcode/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TagCode — Plan. Code. Build. Together." />
+    <meta property="og:description" content="An extensible autonomous coding agent with a desktop app, terminal UI, MCP catalogs, Agent Skills and a real permission system. Open source, MIT." />
+    <meta property="og:url" content="https://tagiyevffm.github.io/tagcode/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%2308090b'/%3E%3Cpath d='M10 19 12 9l7 5M38 19 36 9l-7 5' fill='none' stroke='%23F59E0B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='9' y='15' width='30' height='24' rx='9' fill='%23101216' stroke='%23F59E0B' stroke-width='2.4'/%3E%3Crect x='15' y='21' width='18' height='11' rx='5' fill='%23050608'/%3E%3Ccircle cx='20' cy='26' r='2' fill='%23F59E0B'/%3E%3Ccircle cx='28' cy='26' r='2' fill='%23F59E0B'/%3E%3C/svg%3E"
     />
     <title>TagCode — Plan. Code. Build. Together.</title>
     <style>
@@ -183,6 +194,81 @@
         gap: 9px;
       }
 
+      .gh-link {
+        gap: 6px;
+      }
+
+      .gh-link .stars {
+        color: var(--faint);
+        font-family: var(--mono);
+        font-size: 10px;
+      }
+
+      .menu-toggle {
+        display: none;
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        background: var(--surface);
+        color: var(--muted);
+        padding: 0;
+      }
+
+      .menu-toggle span {
+        display: block;
+        width: 16px;
+        height: 1.5px;
+        margin: 3.5px auto;
+        background: currentColor;
+        border-radius: 2px;
+        transition: transform 160ms ease, opacity 160ms ease;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+
+      .mobile-menu {
+        display: none;
+        border-top: 1px solid var(--border);
+        background: rgba(8, 9, 11, 0.98);
+        padding: 10px 0 16px;
+      }
+
+      .mobile-menu a {
+        display: block;
+        padding: 10px 2px;
+        color: var(--muted);
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      .mobile-menu a:last-child {
+        border-bottom: 0;
+        color: var(--accent);
+      }
+
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 90;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+        pointer-events: none;
+      }
+
       .btn {
         display: inline-flex;
         align-items: center;
@@ -308,6 +394,7 @@
         font-family: var(--mono);
         font-size: 12.5px;
         color: var(--muted);
+        max-width: 100%;
       }
 
       .install .dollar {
@@ -316,6 +403,10 @@
 
       .install code {
         color: var(--text);
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .install button {
@@ -637,6 +728,48 @@
       .provider:hover {
         color: var(--text);
         border-color: var(--border-strong);
+      }
+
+      .stats {
+        padding: 0 0 8px;
+      }
+
+      .stats-inner {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--border);
+        margin-top: -1px;
+      }
+
+      .stat {
+        background: var(--bg-soft);
+        padding: 20px 22px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: -0.8px;
+      }
+
+      .stat strong em {
+        color: var(--accent);
+        font-style: normal;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 7px;
+        color: var(--faint);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
       }
 
       section {
@@ -1204,6 +1337,15 @@
         color: var(--faint);
         font-family: var(--mono);
         font-size: 10.5px;
+        line-height: 1.7;
+      }
+
+      .footer-note a {
+        color: var(--muted);
+      }
+
+      .footer-note a:hover {
+        color: var(--accent);
       }
 
       .toast {
@@ -1319,6 +1461,18 @@
         .nav-links {
           display: none;
         }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        .mobile-menu.open {
+          display: block;
+        }
+
+        .stats-inner {
+          grid-template-columns: 1fr 1fr;
+        }
       }
 
       @media (max-width: 760px) {
@@ -1336,6 +1490,18 @@
 
         .nav-cta .btn.ghost {
           display: none;
+        }
+
+        .nav-cta .gh-link {
+          display: none;
+        }
+
+        .stats-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .stat {
+          padding: 16px;
         }
 
         h1 {
@@ -1440,6 +1606,7 @@
   <body>
     <a class="skip" href="#main">Skip to content</a>
     <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
     <header class="site-header" id="site-header">
       <div class="wrap">
@@ -1465,10 +1632,24 @@
             <a href="#quickstart">Quick start</a>
           </div>
           <div class="nav-cta">
-            <a class="btn ghost small" href="#features">Explore</a>
+            <a class="btn ghost small gh-link" href="https://github.com/Tagiyevffm/tagcode" target="_blank" rel="noreferrer" aria-label="View TagCode on GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.17c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+              GitHub <span class="stars" id="gh-stars"></span>
+            </a>
             <a class="btn primary small" href="#quickstart">Get started</a>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+              <span></span><span></span><span></span>
+            </button>
           </div>
         </nav>
+        <div class="mobile-menu" id="mobile-menu">
+          <a href="#features">Features</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#surfaces">Surfaces</a>
+          <a href="#deepdive">MCP &amp; Skills</a>
+          <a href="#quickstart">Quick start</a>
+          <a href="https://github.com/Tagiyevffm/tagcode" target="_blank" rel="noreferrer">GitHub repository ↗</a>
+        </div>
       </div>
     </header>
 
@@ -1487,14 +1668,16 @@
               <div class="hero-actions">
                 <div class="install">
                   <span class="dollar">$</span>
-                  <code>npm install -g tagcode</code>
-                  <button type="button" data-copy="npm install -g tagcode" aria-label="Copy install command">
+                  <code>git clone https://github.com/Tagiyevffm/tagcode.git</code>
+                  <button type="button" data-copy="git clone https://github.com/Tagiyevffm/tagcode.git" aria-label="Copy clone command">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" /></svg>
                   </button>
                 </div>
                 <a class="btn primary" href="#quickstart">Start building <span aria-hidden="true">→</span></a>
+                <a class="btn" href="https://github.com/Tagiyevffm/tagcode" target="_blank" rel="noreferrer">View source</a>
               </div>
               <div class="hero-note">
+                <span><i>✓</i> Open source · MIT</span>
                 <span><i>✓</i> Windows first</span>
                 <span><i>✓</i> Desktop + terminal</span>
                 <span><i>✓</i> Bring your own model</span>
@@ -1583,6 +1766,17 @@
           </div>
         </div>
       </div>
+
+      <section class="stats" aria-label="TagCode at a glance">
+        <div class="wrap">
+          <div class="stats-inner reveal">
+            <div class="stat"><strong>10</strong><span>ready MCP servers</span></div>
+            <div class="stat"><strong>8</strong><span>curated Agent Skills</span></div>
+            <div class="stat"><strong>4</strong><span>permission modes</span></div>
+            <div class="stat"><strong><em>0</em></strong><span>cloud lock-in</span></div>
+          </div>
+        </div>
+      </section>
 
       <section class="section" id="features">
         <div class="wrap">
@@ -1844,7 +2038,7 @@ permissions.requireApproval:
               <div>
                 <div class="kicker">Quick start</div>
                 <h2>Up and running in a minute.</h2>
-                <p>Install globally, run <code>tgc</code> inside a project and connect a model. The desktop app opens in a local window; <code>tgc tui</code> keeps the terminal.</p>
+                <p>Clone the repository, build it once, then run <code>tgc</code> inside any project. The desktop app opens in a local window; <code>tgc tui</code> keeps the terminal.</p>
                 <div class="hero-actions">
                   <a class="btn primary" href="#top">Back to top <span aria-hidden="true">↑</span></a>
                 </div>
@@ -1852,28 +2046,31 @@ permissions.requireApproval:
               <div class="steps-code">
                 <div class="snippet">
                   <span class="idx">01</span>
-                  <code><span class="d">$</span> npm install -g tagcode</code>
-                  <button type="button" data-copy="npm install -g tagcode" aria-label="Copy install command">
+                  <code><span class="d">$</span> git clone https://github.com/Tagiyevffm/tagcode.git</code>
+                  <button type="button" data-copy="git clone https://github.com/Tagiyevffm/tagcode.git" aria-label="Copy clone command">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" /></svg>
                   </button>
                 </div>
                 <div class="snippet">
                   <span class="idx">02</span>
-                  <code><span class="d">$</span> cd C:\project\my-app</code>
-                  <button type="button" data-copy="cd C:\\project\\my-app" aria-label="Copy cd command">
+                  <code><span class="d">$</span> cd tagcode &amp;&amp; npm install</code>
+                  <button type="button" data-copy="cd tagcode &amp;&amp; npm install" aria-label="Copy install command">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" /></svg>
                   </button>
                 </div>
                 <div class="snippet">
                   <span class="idx">03</span>
-                  <code><span class="d">$</span> tgc</code>
-                  <button type="button" data-copy="tgc" aria-label="Copy tgc command">
+                  <code><span class="d">$</span> npm run build &amp;&amp; npm link</code>
+                  <button type="button" data-copy="npm run build &amp;&amp; npm link" aria-label="Copy build command">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" /></svg>
                   </button>
                 </div>
                 <div class="snippet">
                   <span class="idx">04</span>
-                  <code><span class="d">›</span> Connect model, then describe a task</code>
+                  <code><span class="d">$</span> tgc</code>
+                  <button type="button" data-copy="tgc" aria-label="Copy tgc command">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" /></svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -1923,13 +2120,14 @@ permissions.requireApproval:
             <span>TagCode</span>
           </div>
           <div class="footer-links">
-            <a href="../README.md">README</a>
-            <a href="../docs/ARCHITECTURE.md">Architecture</a>
-            <a href="../docs/MCP.md">MCP</a>
-            <a href="../docs/SKILLS.md">Skills</a>
-            <a href="../SECURITY.md">Security</a>
+            <a href="https://github.com/Tagiyevffm/tagcode" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://github.com/Tagiyevffm/tagcode/blob/main/README.md" target="_blank" rel="noreferrer">README</a>
+            <a href="https://github.com/Tagiyevffm/tagcode/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noreferrer">Architecture</a>
+            <a href="https://github.com/Tagiyevffm/tagcode/blob/main/docs/MCP.md" target="_blank" rel="noreferrer">MCP</a>
+            <a href="https://github.com/Tagiyevffm/tagcode/blob/main/docs/SKILLS.md" target="_blank" rel="noreferrer">Skills</a>
+            <a href="https://github.com/Tagiyevffm/tagcode/issues" target="_blank" rel="noreferrer">Issues</a>
           </div>
-          <div class="footer-note">MIT · Node.js 22+ · Windows first</div>
+          <div class="footer-note">MIT · Node.js 22+ · Windows first<br /><a href="https://github.com/Tagiyevffm/tagcode" target="_blank" rel="noreferrer">Open source on GitHub ↗</a></div>
         </div>
       </div>
     </footer>
@@ -1972,9 +2170,42 @@ permissions.requireApproval:
         });
 
         const header = document.getElementById("site-header");
-        const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+        const progress = document.getElementById("scroll-progress");
+        const onScroll = () => {
+          header.classList.toggle("scrolled", window.scrollY > 8);
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          progress.style.width = `${max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0}%`;
+        };
         onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll, { passive: true });
+
+        // Mobile navigation.
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const setMenu = (open) => {
+          mobileMenu.classList.toggle("open", open);
+          menuToggle.setAttribute("aria-expanded", String(open));
+        };
+        menuToggle.addEventListener("click", () => {
+          setMenu(menuToggle.getAttribute("aria-expanded") !== "true");
+        });
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => setMenu(false));
+        });
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") setMenu(false);
+        });
+
+        // Live GitHub stars; silently hide the counter if the API is unavailable.
+        fetch("https://api.github.com/repos/Tagiyevffm/tagcode", { headers: { Accept: "application/vnd.github+json" } })
+          .then((response) => (response.ok ? response.json() : undefined))
+          .then((repo) => {
+            if (!repo || typeof repo.stargazers_count !== "number") return;
+            const stars = document.getElementById("gh-stars");
+            if (repo.stargazers_count > 0) stars.textContent = `★ ${repo.stargazers_count}`;
+          })
+          .catch(() => undefined);
 
         // Reveal sections as they enter the viewport.
         const revealItems = [...document.querySelectorAll(".reveal")];

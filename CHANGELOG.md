@@ -38,8 +38,10 @@ permission model, provider independence, MCP, Skills and persistent context.
   (a common generated-SKILL.md error) and surfaces a warning instead of marking
   the whole skill invalid.
 - Standalone single-file landing page (`landing/index.html`) with a modern
-  responsive design, animated mascot, feature overview, workflow tabs and
-  quick-start snippets.
+  responsive design, animated mascot, feature overview, workflow tabs,
+  quick-start snippets, mobile navigation, scroll progress and live GitHub
+  metadata. Published with GitHub Pages at
+  https://tagiyevffm.github.io/tagcode/.
 - Interactive Ink terminal UI with streaming output, tool activity, plans,
   approval/confirm/secret/input modals, command completion, history navigation,
   a cat-mascot welcome dashboard with a session sidebar, and a status bar with
