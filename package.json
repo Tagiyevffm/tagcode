@@ -71,5 +71,13 @@
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "vitest": "^5.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tagiyevffm/tagcode.git"
+  },
+  "homepage": "https://github.com/Tagiyevffm/tagcode#readme",
+  "bugs": {
+    "url": "https://github.com/Tagiyevffm/tagcode/issues"
   }
 }
