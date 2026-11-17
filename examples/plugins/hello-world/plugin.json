@@ -1,0 +1,10 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "Example TagCode plugin that adds a greeting tool and slash command.",
+  "main": "index.js",
+  "tagcode": {
+    "apiVersion": "1",
+    "permissions": ["read"]
+  }
+}

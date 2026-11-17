@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "defaultProvider": "ollama",
+  "defaultModel": "qwen2.5-coder:7b",
+  "providers": [
+    {
+      "id": "ollama",
+      "type": "ollama",
+      "baseUrl": "http://localhost:11434/v1",
+      "defaultModel": "qwen2.5-coder:7b",
+      "contextWindow": 32768
+    }
+  ],
+  "permissions": {
+    "mode": "auto",
+    "allow": ["read_file", "list_directory", "search_files", "search_content", "git_status", "git_diff"],
+    "deny": [],
+    "requireApproval": ["run_command", "install_dependencies", "delete_file"]
+  },
+  "context": {
+    "maxTokens": 0,
+    "compactAt": 0.82,
+    "maxToolOutputChars": 20000,
+    "maxSteps": 40,
+    "keepRecentMessages": 8
+  },
+  "ui": {
+    "showReasoning": true,
+    "showTokenUsage": true,
+    "showToolOutput": false,
+    "animations": true
+  },
+  "plugins": {
+    "directories": ["./examples/plugins/hello-world"],
+    "enabled": ["hello-world"]
+  },
+  "skills": {
+    "autoSelect": true,
+    "maxActive": 3
+  },
+  "mcp": { "enabled": true }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "tagcode",
+  "version": "0.1.0",
+  "description": "TagCode — an extensible autonomous coding agent with a desktop app and terminal UI.",
+  "license": "MIT",
+  "author": "Tagiyevff",
+  "type": "module",
+  "bin": {
+    "tgc": "dist/cli/index.js",
+    "tagcode": "dist/cli/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist",
+    "desktop",
+    "landing",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/cli/index.ts tui",
+    "app": "node dist/cli/index.js app",
+    "app:dev": "tsx src/cli/index.ts app",
+    "app:serve": "node dist/cli/index.js app --no-open",
+    "start": "node dist/cli/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "check": "npm run typecheck && npm test",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "coding-agent",
+    "cli",
+    "terminal",
+    "mcp",
+    "llm"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "commander": "^15.1.0",
+    "ink": "^8.0.0",
+    "picocolors": "^1.1.1",
+    "react": "^19.3.1",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "optionalDependencies": {
+    "@napi-rs/keyring": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.0"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+.tagcode/
+!.tagcode.example/
+*.log
+.DS_Store
+Thumbs.db
+
+# Local scratch files
+.tmp-*
